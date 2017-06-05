@@ -14,10 +14,10 @@ public class VirtualPetShelter {
 	
 	
 	void displayMenu() {
-		System.out.println(" Name\t     | hunger | thirst | ennui |");
-		System.out.println("--------------------------------------");
+		System.out.println(" Name\t     | hunger | thirst | ennui | hygiene");
+		System.out.println("-------------------------------------------------");
 		for(VirtualPet current: shelterPets.values()) {
-			System.out.println(current + ": \t " + current.hunger + "\t " +current.thirst + "\t " + current.ennui);	
+			System.out.println(current + ": \t " + current.hunger + "\t " +current.thirst + "\t " + current.ennui + "\t" + current.hygiene);	
 		}
 	}
 	
@@ -74,6 +74,12 @@ public class VirtualPetShelter {
 		petX.play();
 	}
 	
+	void cleanCages() {
+		for(VirtualPet current: shelterPets.values()) {
+			current.clean();
+		}
+	}
+	
 /**********************
  * Boolean Tests 
  *********************/
@@ -86,6 +92,14 @@ public class VirtualPetShelter {
 			if (current.hunger < 60 && current.thirst < 60 && current.ennui < 60) {	
 			return true;
 			}
+		} return false;
+	}
+	
+	boolean allClean() {
+		for(VirtualPet current: shelterPets.values()) {
+			if (current.isClean()) {
+				return true;
+		}
 		} return false;
 	}
 	

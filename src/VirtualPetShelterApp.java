@@ -10,7 +10,6 @@ public class VirtualPetShelterApp {
 		Scanner input = new Scanner(System.in);	
 		
 		VirtualPetShelter shelter = new VirtualPetShelter();
-		VirtualRescuePets rescue = new VirtualRescuePets();
 		
 		//New Starter Pet
 		VirtualPet bigglesworth = new VirtualPet("Bigglesworth", 101, "Siamese", 20, 20, 10);
@@ -23,6 +22,8 @@ public class VirtualPetShelterApp {
 		System.out.println("Two new pets have joined the shelter!");
 		System.out.println(shelter.shelterPets.values());
 
+		System.out.println("\n\nWelcome To The Team!! Remember our motto: ");
+		System.out.println("\n\"Market-friendly name; but corporate culture\".");
 		
 		do {
 			System.out.println("\n----------------------------------------------------");
@@ -37,8 +38,12 @@ public class VirtualPetShelterApp {
 			System.out.println("1. Feed the Pets.");
 			System.out.println("2. Water the Pets.");
 			System.out.println("3. Play with a pet");
-			System.out.println("4. Adopt a pet");
-			System.out.println("5. Admit a pet");
+			System.out.println("4. Adopt a shelter pet");
+			System.out.println("5. Admit a homeless pet");
+			System.out.println("6. Clean the cages");
+				if(!shelter.allClean()) {
+					System.out.println("\nSome of the animals are quite dirty. Time to clean the cages.");
+				}
 			int userInput = input.nextInt();
 			
 			
@@ -72,7 +77,7 @@ public class VirtualPetShelterApp {
 							System.out.println("\nYour PET ID is invalid.\nEnter the PET ID of the pet you wish to play with: ");
 							userChoice = input.nextInt();
 						} else {
-							System.out.println("\n Pet located. What would you like to do?");
+							System.out.println("\nPet located. What would you like to do?");
 									System.out.println("\n1. Feed\n2. Give Water\n3. Play");
 									int userChoice2 = input.nextInt();
 
@@ -93,7 +98,7 @@ public class VirtualPetShelterApp {
 										shelter.allTick();
 										break;
 									default:
-										System.out.println("This isn't rocket surgery. Go back to the main menu.");
+										System.out.println("This isn't rocket surgery, intern. Go back to the main menu.");
 									}
 						}
 						shelter.allTick();
@@ -126,8 +131,14 @@ public class VirtualPetShelterApp {
 					
 					VirtualPet newbie = new VirtualPet(userPetName, userPetId, userBreed);
 					shelter.putPet(newbie);
-					System.out.println("\nYour new pet has joined the shelter. Gods help us.");
+					System.out.println("\nYour new pet has joined the shelter. May the gods help us.");
 					shelter.allTick();
+				case 6:
+					System.out.println("It takes one filthy animal to recognize another.");
+					System.out.println("\nAfter many grueling hours, you've cleaned all the animals and their cages.\nThat bite looks infected...\n\nGood job, intern.");
+					shelter.allTick();
+					shelter.cleanCages();
+					break;
 				default: 
 					System.out.println("\nIf you keep typing gibberish, there will be a mandatory drug test");
 					shelter.allTick();
@@ -140,28 +151,9 @@ public class VirtualPetShelterApp {
 		System.out.println("\nIt's safe to assume murder goes on your permanent record.");
 		System.exit(0);
 		
-		
-		
-		
 		input.close();
 	} // end main
-
-	
-	
-//	if (userChoice2 == 1) {
-//	shelter.getPetFeed(userChoice);
-//	System.out.println("\nPet is fed! Reminder: pet food is corporate property. Eating is stealing!");
-//} else if (userChoice2 == 2) {
-//	shelter.getPetDrink(userChoice);
-////	System.out.println("\nThe pet drank some water. Questioning your life choices yet?");
-//} else if (userChoice2 == 3) {
-//	shelter.getPetPlay(userChoice);
-//	System.out.println("The pet plays with you. It relies on you for food, so it has no choice.");
-//} else {
-//	System.out.println("Invalid input.");
-//}	
 	
 	
 	
-	
-}
+} //end app

@@ -11,6 +11,7 @@ public class VirtualPet {
 	
 	int hygiene;
 	
+	//not currently used:
 	int obedience;
 	int intelligence;
 	
@@ -22,12 +23,16 @@ public class VirtualPet {
 		this.hunger = hunger;
 		this.thirst = thirst;
 		this.ennui = ennui;	
+		this.hygiene = 10;
 	}
 	
 	public VirtualPet(String userPetName, int userPetId, String userBreed) { 
 		this.name = userPetName;
 		this.id = userPetId;
 		this.breed = userBreed;	
+		this.hunger = 30;
+		this.thirst = 30;
+		this.ennui = 5;
 	}
 	
 	
@@ -55,12 +60,16 @@ public class VirtualPet {
 		obedience += 20;
 	}
 	
+	void clean() {
+		hygiene = 10;
+	}
+	
 	
 	/*****************
 	 * Boolean Tests
 	 ******************/
 	boolean isClean() {
-		return hygiene >= 5;
+		return hygiene >= 4;
 	}
 	
 	boolean isHungry() {
@@ -79,11 +88,15 @@ public class VirtualPet {
 		return hunger <= 60 && thirst <= 60;
 	}
 	
+/*******************
+ * Tick method
+ ******************/
 	
 	void tick() {
 		hunger += 5;
 		thirst += 5;
 		ennui += 5;
+		hygiene -= 1;
 	}
 	
 	
