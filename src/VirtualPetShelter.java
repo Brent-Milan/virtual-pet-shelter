@@ -56,6 +56,9 @@ public class VirtualPetShelter {
 		}
 	}
 	
+/****************************
+ * Single Pet Interactions
+ ***************************/
 	void getPetFeed(int number) {
 		VirtualPet petX = shelterPets.get(number);
 		petX.feed();
@@ -71,22 +74,46 @@ public class VirtualPetShelter {
 		petX.play();
 	}
 	
-	
+/**********************
+ * Boolean Tests 
+ *********************/
 	boolean idCheck(int number) {
 		return shelterPets.containsKey(number);
 	}
 	
+	boolean allAlive() {
+		for(VirtualPet current: shelterPets.values()) {
+			if (current.hunger < 60 && current.thirst < 60 && current.ennui < 60) {	
+			return true;
+			}
+		} return false;
+	}
 	
+/********************
+ * Remove/Adopt Pet
+ ********************/	
+	void adopt(int number) {
+		shelterPets.remove(number);
+	}
 	
+/*********************
+ * SPOOOOON  (allTick method)
+ ********************/
+	void allTick() {
+		for(VirtualPet current: shelterPets.values()) {
+			current.tick();
+			if (current.hunger < 0) {
+				current.hunger = 0;
+			} else if (current.thirst < 0) {
+				current.thirst = 0;
+			} else if (current.ennui < 0) {
+				current.ennui = 0;
+			}
+		}
+	}
 	
 	
 } //end class
 	
 	
 	
-//	void displayEntries() {
-//		for(VirtualPet current: shelterPets.values()) {
-//			System.out.println(current + ": " + current.hunger + " hunger, " + current.thirst + " thirst, " + current.ennui + " ennui.");	
-//		}
-//	}
-//	

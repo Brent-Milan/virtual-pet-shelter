@@ -24,8 +24,15 @@ public class VirtualPet {
 		this.ennui = ennui;	
 	}
 	
-
+	public VirtualPet(String userPetName, int userPetId, String userBreed) { 
+		this.name = userPetName;
+		this.id = userPetId;
+		this.breed = userBreed;	
+	}
 	
+	
+
+
 	@Override
 	public String toString() {
 		return name;
@@ -73,6 +80,11 @@ public class VirtualPet {
 	}
 	
 	
+	void tick() {
+		hunger += 5;
+		thirst += 5;
+		ennui += 5;
+	}
 	
 	
 }
